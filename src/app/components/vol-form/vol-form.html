@@ -1,0 +1,54 @@
+<div class="container mt-4" style="max-width: 600px">
+  <h2>Ajouter un vol</h2>
+
+  <form [formGroup]="form" (ngSubmit)="envoyer()" class="bg-white p-4 rounded shadow-sm">
+    <div class="mb-3">
+      <label class="form-label">Numéro de vol (ex: TU712)</label>
+      <input class="form-control" formControlName="numeroVol" [class.is-invalid]="invalide('numeroVol')">
+      @if (invalide('numeroVol')) {
+        <div class="invalid-feedback">Format invalide (2 lettres majuscules + 3 ou 4 chiffres).</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Compagnie</label>
+      <input class="form-control" formControlName="compagnie" [class.is-invalid]="invalide('compagnie')">
+      @if (invalide('compagnie')) { <div class="invalid-feedback">Champ obligatoire.</div> }
+    </div>
+
+    <div class="row">
+      <div class="col mb-3">
+        <label class="form-label">Départ</label>
+        <input class="form-control" formControlName="depart" [class.is-invalid]="invalide('depart')">
+        @if (invalide('depart')) { <div class="invalid-feedback">Obligatoire.</div> }
+      </div>
+      <div class="col mb-3">
+        <label class="form-label">Arrivée</label>
+        <input class="form-control" formControlName="arrivee" [class.is-invalid]="invalide('arrivee')">
+        @if (invalide('arrivee')) { <div class="invalid-feedback">Obligatoire.</div> }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Date de départ</label>
+      <input type="date" class="form-control" formControlName="dateDepart" [class.is-invalid]="invalide('dateDepart')">
+      @if (invalide('dateDepart')) { <div class="invalid-feedback">Obligatoire.</div> }
+    </div>
+
+    <div class="row">
+      <div class="col mb-3">
+        <label class="form-label">Prix (DT)</label>
+        <input type="number" class="form-control" formControlName="prix" [class.is-invalid]="invalide('prix')">
+        @if (invalide('prix')) { <div class="invalid-feedback">Prix minimum 1.</div> }
+      </div>
+      <div class="col mb-3">
+        <label class="form-label">Places disponibles</label>
+        <input type="number" class="form-control" formControlName="placesDisponibles" [class.is-invalid]="invalide('placesDisponibles')">
+        @if (invalide('placesDisponibles')) { <div class="invalid-feedback">Valeur invalide.</div> }
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success me-2">Enregistrer</button>
+    <a class="btn btn-secondary" routerLink="/vols">Annuler</a>
+  </form>
+</div>

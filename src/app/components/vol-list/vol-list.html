@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between mb-3">
+    <h2>Liste des vols</h2>
+    <a class="btn btn-primary" routerLink="/vols/nouveau">Ajouter un vol</a>
+  </div>
+
+  <table class="table table-striped bg-white">
+    <thead>
+      <tr><th>N°</th><th>Compagnie</th><th>Départ</th><th>Arrivée</th><th>Date</th><th>Prix</th><th></th></tr>
+    </thead>
+    <tbody>
+      @for (v of volService.vols(); track v.id) {
+        <tr>
+          <td>{{ v.numeroVol }}</td>
+          <td>{{ v.compagnie }}</td>
+          <td>{{ v.depart }}</td>
+          <td>{{ v.arrivee }}</td>
+          <td>{{ v.dateDepart }}</td>
+          <td>{{ v.prix }} DT</td>
+          <td>
+            <a class="btn btn-sm btn-info me-1" [routerLink]="['/vols', v.id]">Détail</a>
+            <button class="btn btn-sm btn-danger" (click)="volService.supprimer(v.id)">Supprimer</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr><td colspan="7" class="text-center text-muted">Aucun vol</td></tr>
+      }
+    </tbody>
+  </table>
+</div>

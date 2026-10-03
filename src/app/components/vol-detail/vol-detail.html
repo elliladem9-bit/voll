@@ -1,0 +1,19 @@
+<div class="container mt-4" style="max-width: 600px">
+  @if (vol) {
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white">
+        Vol {{ vol.numeroVol }} — {{ vol.compagnie }}
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Départ :</strong> {{ vol.depart }}</li>
+        <li class="list-group-item"><strong>Arrivée :</strong> {{ vol.arrivee }}</li>
+        <li class="list-group-item"><strong>Date :</strong> {{ vol.dateDepart }}</li>
+        <li class="list-group-item"><strong>Prix :</strong> {{ vol.prix }} DT</li>
+        <li class="list-group-item"><strong>Places disponibles :</strong> {{ vol.placesDisponibles }}</li>
+      </ul>
+    </div>
+  } @else {
+    <div class="alert alert-warning">Vol introuvable.</div>
+  }
+  <a class="btn btn-secondary mt-3" routerLink="/vols">← Retour</a>
+</div>
